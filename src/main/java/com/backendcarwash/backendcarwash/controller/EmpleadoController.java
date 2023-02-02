@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 @RequestMapping("/empleados")
 public class EmpleadoController {
 
