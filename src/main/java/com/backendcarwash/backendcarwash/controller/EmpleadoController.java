@@ -20,12 +20,12 @@ public class EmpleadoController {
         return empleadoService.crearEmpleado(empleado).build();
     }
 
-    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON)
+    @GetMapping(value = "/id", produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<ResponseDTO> getEmpleadoById(@RequestParam Long id){
         return empleadoService.getEmpleadoById(id).build();
     }
 
-    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON)
+    @GetMapping(value = "/ci", produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<ResponseDTO> getEmpleadoByCedula(@RequestParam String ci){
         return empleadoService.getEmpleadoByCedula(ci).build();
     }

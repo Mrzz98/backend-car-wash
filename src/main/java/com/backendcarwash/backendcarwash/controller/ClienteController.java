@@ -20,13 +20,13 @@ public class ClienteController {
         return clienteService.crearCliente(cliente).build();
     }
 
-    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON)
+    @GetMapping(value = "/id", produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<ResponseDTO> getClienteById(@RequestParam Long id){
         return clienteService.getClienteById(id).build();
     }
 
-    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON)
-    public ResponseEntity<ResponseDTO> getClienteByCi(@RequestParam String ci){
+    @GetMapping(value = "/ci", produces = MediaType.APPLICATION_JSON)
+    public ResponseEntity<ResponseDTO> getClienteByCedula(@RequestParam String ci){
         return clienteService.getClienteByCedula(ci).build();
     }
 
