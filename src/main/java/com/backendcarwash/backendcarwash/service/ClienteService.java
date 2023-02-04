@@ -14,7 +14,7 @@ public interface ClienteService {
 
     ResponseDTO getClienteById(Long id);
 
-    ResponseDTO getClienteByCi(String ci);
+    ResponseDTO getClienteByCedula(String ci);
 
     ResponseDTO getClientes();
 

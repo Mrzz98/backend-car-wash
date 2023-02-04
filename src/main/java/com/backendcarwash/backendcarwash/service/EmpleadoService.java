@@ -14,7 +14,7 @@ public interface EmpleadoService {
 
     ResponseDTO getEmpleadoById(Long id);
 
-    ResponseDTO getEmpleadoByCi(String ci);
+    ResponseDTO getEmpleadoByCedula(String ci);
 
     ResponseDTO getEmpleados();
 

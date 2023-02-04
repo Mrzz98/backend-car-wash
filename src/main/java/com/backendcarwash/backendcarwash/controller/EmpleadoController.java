@@ -26,8 +26,8 @@ public class EmpleadoController {
     }
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON)
-    public ResponseEntity<ResponseDTO> getEmpleadobyCi(@RequestParam String ci){
-        return empleadoService.getEmpleadoByCi(ci).build();
+    public ResponseEntity<ResponseDTO> getEmpleadoByCedula(@RequestParam String ci){
+        return empleadoService.getEmpleadoByCedula(ci).build();
     }
 
     @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)

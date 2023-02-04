@@ -53,7 +53,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     }
 
     @Override
-    public ResponseDTO getEmpleadoByCi(String ci) {
+    public ResponseDTO getEmpleadoByCedula(String ci) {
         Optional<Empleado> empleado = empleadoRepository.findByCedula(ci);
 //        return empleado.map(value -> new ResponseDTO(new Date(), HttpStatus.OK, "Actualizado con exito.", value)).orElseGet(() -> new ResponseDTO(new Date(), HttpStatus.BAD_REQUEST, "El empleado no existe", null));
         if(empleado.isEmpty()){

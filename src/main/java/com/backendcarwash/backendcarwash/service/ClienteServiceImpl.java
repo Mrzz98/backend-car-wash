@@ -53,7 +53,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public ResponseDTO getClienteByCi(String ci) {
+    public ResponseDTO getClienteByCedula(String ci) {
         Optional<Cliente> cliente = clienteRepository.findByCedula(ci);
 //        return cliente.map(value -> new ResponseDTO(new Date(), HttpStatus.OK, "Actualizado con exito.", value)).orElseGet(() -> new ResponseDTO(new Date(), HttpStatus.BAD_REQUEST, "El empleado no existe", null));
         if(cliente.isEmpty()){

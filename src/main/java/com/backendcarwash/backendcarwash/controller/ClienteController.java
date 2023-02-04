@@ -27,7 +27,7 @@ public class ClienteController {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<ResponseDTO> getClienteByCi(@RequestParam String ci){
-        return clienteService.getClienteByCi(ci).build();
+        return clienteService.getClienteByCedula(ci).build();
     }
 
     @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
