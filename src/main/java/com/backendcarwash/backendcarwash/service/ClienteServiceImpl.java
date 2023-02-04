@@ -2,8 +2,8 @@ package com.backendcarwash.backendcarwash.service;
 
 import com.backendcarwash.backendcarwash.dto.ResponseDTO;
 import com.backendcarwash.backendcarwash.dto.TableDTO;
-import com.backendcarwash.backendcarwash.model.Empleado;
-import com.backendcarwash.backendcarwash.repository.EmpleadoRepository;
+import com.backendcarwash.backendcarwash.model.Cliente;
+import com.backendcarwash.backendcarwash.repository.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -16,58 +16,58 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class EmpleadoServiceImpl implements EmpleadoService {
+public class ClienteServiceImpl implements ClienteService {
 
-    private final EmpleadoRepository empleadoRepository;
+    private final ClienteRepository clienteRepository;
     @Override
-    public ResponseDTO crearEmpleado(Empleado empleado) {
-        if(empleado.getNombre() == null){
+    public ResponseDTO crearCliente(Cliente cliente) {
+        if(cliente.getNombre() == null){
             return new ResponseDTO(new Date(), HttpStatus.BAD_REQUEST, "Se requiere el Nombre.", null);
         }
-        empleadoRepository.save(empleado);
+        clienteRepository.save(cliente);
 
 
         return new ResponseDTO(new Date(), HttpStatus.OK, "Creado con exito.", null);
     }
 
     @Override
-    public ResponseDTO editarEmpleado(Empleado empleado) {
-        empleadoRepository.save(empleado);
+    public ResponseDTO editarCliente(Cliente cliente) {
+        clienteRepository.save(cliente);
         return new ResponseDTO(new Date(), HttpStatus.OK, "Actualizado con exito.", null);
     }
 
     @Override
-    public ResponseDTO eliminarEmpleado(Long id) {
-        empleadoRepository.deleteById(id);
+    public ResponseDTO eliminarCliente(Long id) {
+        clienteRepository.deleteById(id);
         return new ResponseDTO(new Date(), HttpStatus.OK, "Eliminado con exito.", null);
     }
 
     @Override
-    public ResponseDTO getEmpleadoById(Long id) {
-        Optional<Empleado> empleado = empleadoRepository.findById(id);
+    public ResponseDTO getClienteById(Long id) {
+        Optional<Cliente> cliente = clienteRepository.findById(id);
 //        return empleado.map(value -> new ResponseDTO(new Date(), HttpStatus.OK, "Actualizado con exito.", value)).orElseGet(() -> new ResponseDTO(new Date(), HttpStatus.BAD_REQUEST, "El empleado no existe", null));
-        if(empleado.isEmpty()){
+        if(cliente.isEmpty()){
             return new ResponseDTO(new Date(), HttpStatus.BAD_REQUEST, "El empleado no existe", null);
         }
-        return new ResponseDTO(new Date(), HttpStatus.OK, "Objeto recuperado con exito.", empleado.get());
+        return new ResponseDTO(new Date(), HttpStatus.OK, "Objeto recuperado con exito.", cliente.get());
     }
 
     @Override
-    public ResponseDTO getEmpleadoByCi(String ci) {
-        Optional<Empleado> empleado = empleadoRepository.findByCedula(ci);
-//        return empleado.map(value -> new ResponseDTO(new Date(), HttpStatus.OK, "Actualizado con exito.", value)).orElseGet(() -> new ResponseDTO(new Date(), HttpStatus.BAD_REQUEST, "El empleado no existe", null));
-        if(empleado.isEmpty()){
+    public ResponseDTO getClienteByCi(String ci) {
+        Optional<Cliente> cliente = clienteRepository.findByCedula(ci);
+//        return cliente.map(value -> new ResponseDTO(new Date(), HttpStatus.OK, "Actualizado con exito.", value)).orElseGet(() -> new ResponseDTO(new Date(), HttpStatus.BAD_REQUEST, "El empleado no existe", null));
+        if(cliente.isEmpty()){
             return new ResponseDTO(new Date(), HttpStatus.BAD_REQUEST, "El empleado no existe", null);
         }
-        return new ResponseDTO(new Date(), HttpStatus.OK, "Objeto recuperado con exito.", empleado.get());
+        return new ResponseDTO(new Date(), HttpStatus.OK, "Objeto recuperado con exito.", cliente.get());
     }
 
     @Override
-    public ResponseDTO getEmpleados() {
-        List<Empleado> empleados = empleadoRepository.findAll();
+    public ResponseDTO getClientes() {
+        List<Cliente> clientes = clienteRepository.findAll();
         TableDTO tableDTO = new TableDTO<>();
-        tableDTO.setLista(empleados);
-        tableDTO.setTotalRecords(empleados.size());
+        tableDTO.setLista(clientes);
+        tableDTO.setTotalRecords(clientes.size());
 
         return new ResponseDTO(new Date(), HttpStatus.OK, "Lista recuperada con exito.", tableDTO);
     }

@@ -25,6 +25,11 @@ public class EmpleadoController {
         return empleadoService.getEmpleadoById(id).build();
     }
 
+    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON)
+    public ResponseEntity<ResponseDTO> getEmpleadobyCi(@RequestParam String ci){
+        return empleadoService.getEmpleadoByCi(ci).build();
+    }
+
     @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<ResponseDTO> editarEmpleado(@RequestBody Empleado empleado){
         return empleadoService.editarEmpleado(empleado).build();
