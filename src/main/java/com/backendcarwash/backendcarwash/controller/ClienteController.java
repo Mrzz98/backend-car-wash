@@ -11,8 +11,8 @@ import javax.ws.rs.core.MediaType;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/clientes")
 @CrossOrigin(origins = "*")
+@RequestMapping("/clientes")
 public class ClienteController {
 
     private final ClienteService clienteService;
