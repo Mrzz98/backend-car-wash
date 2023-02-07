@@ -39,7 +39,7 @@ public class ClienteController {
 
     @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<ResponseDTO> eliminarCliente(@RequestParam Long id){
-        return clienteService.getClienteById(id).build();
+        return clienteService.eliminarCliente(id).build();
     }
 
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON)

@@ -39,7 +39,7 @@ public class EmpleadoController {
 
     @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<ResponseDTO> eliminarEmpleado(@RequestParam Long id){
-        return empleadoService.getEmpleadoById(id).build();
+        return empleadoService.eliminarEmpleado(id).build();
     }
 
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON)
