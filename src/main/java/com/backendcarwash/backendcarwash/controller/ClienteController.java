@@ -17,11 +17,13 @@ public class ClienteController {
 
     private final ClienteService clienteService;
     @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+    @CrossOrigin(origins = "*")
     public ResponseEntity<ResponseDTO> crearCliente(@RequestBody Cliente cliente){
         return clienteService.crearCliente(cliente).build();
     }
 
     @GetMapping(value = "/id", produces = MediaType.APPLICATION_JSON)
+    @CrossOrigin(origins = "*")
     public ResponseEntity<ResponseDTO> getClienteById(@RequestParam Long id){
         return clienteService.getClienteById(id).build();
     }
@@ -33,16 +35,19 @@ public class ClienteController {
     }
 
     @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+    @CrossOrigin(origins = "*")
     public ResponseEntity<ResponseDTO> editarCliente(@RequestBody Cliente cliente){
         return clienteService.editarCliente(cliente).build();
     }
 
     @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_JSON)
+    @CrossOrigin(origins = "*")
     public ResponseEntity<ResponseDTO> eliminarCliente(@RequestParam Long id){
-        return clienteService.eliminarCliente(id).build();
+        return clienteService.getClienteById(id).build();
     }
 
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON)
+    @CrossOrigin(origins = "*")
     public ResponseEntity<ResponseDTO> getClientes(){
         return clienteService.getClientes().build();
     }

@@ -17,11 +17,13 @@ public class EmpleadoController {
 
     private final EmpleadoService empleadoService;
     @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+    @CrossOrigin(origins = "*")
     public ResponseEntity<ResponseDTO> crearEmpleado(@RequestBody Empleado empleado){
         return empleadoService.crearEmpleado(empleado).build();
     }
 
     @GetMapping(value = "/id", produces = MediaType.APPLICATION_JSON)
+    @CrossOrigin(origins = "*")
     public ResponseEntity<ResponseDTO> getEmpleadoById(@RequestParam Long id){
         return empleadoService.getEmpleadoById(id).build();
     }
@@ -33,16 +35,19 @@ public class EmpleadoController {
     }
 
     @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+    @CrossOrigin(origins = "*")
     public ResponseEntity<ResponseDTO> editarEmpleado(@RequestBody Empleado empleado){
         return empleadoService.editarEmpleado(empleado).build();
     }
 
     @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_JSON)
+    @CrossOrigin(origins = "*")
     public ResponseEntity<ResponseDTO> eliminarEmpleado(@RequestParam Long id){
         return empleadoService.eliminarEmpleado(id).build();
     }
 
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON)
+    @CrossOrigin(origins = "*")
     public ResponseEntity<ResponseDTO> getEmpleados(){
         return empleadoService.getEmpleados().build();
     }
