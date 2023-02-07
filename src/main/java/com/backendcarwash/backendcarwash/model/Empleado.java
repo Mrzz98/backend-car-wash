@@ -32,7 +32,7 @@ public class Empleado {
     @Column(name = "APELLIDO")
     private String apellido;
     @NotNull
-    @Column(name = "CEDULA")
+    @Column(name = "CEDULA", unique = true)
     private String cedula;
 
     @Column(name = "TELEFONO")

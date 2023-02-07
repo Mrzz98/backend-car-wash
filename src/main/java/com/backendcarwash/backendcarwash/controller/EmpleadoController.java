@@ -11,8 +11,8 @@ import javax.ws.rs.core.MediaType;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 @RequestMapping("/empleados")
+@CrossOrigin(origins = "*")
 public class EmpleadoController {
 
     private final EmpleadoService empleadoService;
@@ -27,6 +27,7 @@ public class EmpleadoController {
     }
 
     @GetMapping(value = "/ci", produces = MediaType.APPLICATION_JSON)
+    @CrossOrigin(origins = "*")
     public ResponseEntity<ResponseDTO> getEmpleadoByCedula(@RequestParam String ci){
         return empleadoService.getEmpleadoByCedula(ci).build();
     }
