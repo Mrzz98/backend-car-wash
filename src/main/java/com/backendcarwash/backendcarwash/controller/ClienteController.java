@@ -43,7 +43,7 @@ public class ClienteController {
     @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_JSON)
     @CrossOrigin(origins = "*")
     public ResponseEntity<ResponseDTO> eliminarCliente(@RequestParam Long id){
-        return clienteService.eliminarEmpleado(id).build();
+        return clienteService.eliminarCliente(id).build();
     }
 
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON)
