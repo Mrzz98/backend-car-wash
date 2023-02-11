@@ -16,31 +16,36 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "CLIENTES")
-public class Cliente {
+@Table(name = "Proveedores")
+public class Proveedor {
+
 
     @Id
-    @SequenceGenerator(name = "CLIENTE_ID_GENERATOR", sequenceName = "CLIENTE_ID_USUARIO_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CLIENTE_ID_GENERATOR")
+    @SequenceGenerator(name = "PROVEEDOR_ID_GENERATOR", sequenceName = "PROVEEDOR_ID_USUARIO_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PROVEEDOR_ID_GENERATOR")
     @NotNull
-    @Column(name = "ID_CLIENTE")
+    @Column(name = "ID_PROVEEDOR")
     private Long id;
+
     @NotNull
     @Column(name = "NOMBRE")
     private String nombre;
+
     @NotNull
-    @Column(name = "APELLIDO")
-    private String apellido;
-    @NotNull
-    @Column(name = "CEDULA", unique = true)
+    @Column(name = "CEDULA")
     private String cedula;
 
     @NotNull
-    @Column(name = "RUC_CLIENTE")
+    @Column(name = "RUC_PROVEEDOR")
     private String ruc;
+
+    @NotNull
+    @Column(name = "DIRECCION")
+    private String direccion;
 
     @Column(name = "TELEFONO")
     private String telefono;
+
     @Email
     @Column(name = "EMAIL")
     private String correo;
@@ -49,7 +54,5 @@ public class Cliente {
     @JsonFormat(pattern = "dd/MM/yyyy hh:mm")
     @Column(name = "FECHA_INGRESO")
     private Date fechaIngreso;
-
-
 
 }
