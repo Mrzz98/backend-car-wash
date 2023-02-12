@@ -55,14 +55,14 @@ public class OrdenCompra implements Serializable {
     @JsonProperty("ID_PROVEEDOR")
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ID_PROVEEDOR")
     private Proveedor proveedor;
 
     @JsonProperty("ID_CLIENTE")
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ID_CLIENTE")
     private Cliente cliente;
 
