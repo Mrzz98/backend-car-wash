@@ -32,8 +32,8 @@ public class OrdenCompra implements Serializable {
     @Column(name = "ID_ORDEN_COMPRA", updatable = false, unique=true)
     private Long idOrdenCompra;
 
-    @Column(name="NUMERO_ORDEN_COMPRA",nullable=false,length=6)
-    private String numeroOrdenCompra;
+//    @Column(name="NUMERO_ORDEN_COMPRA",nullable=false,length=6)
+//    private String numeroOrdenCompra;
 
     @NotNull(message="No puede estar vacio")
     @Column(name="FECHA_EMISION")
@@ -53,10 +53,6 @@ public class OrdenCompra implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ID_PROVEEDOR")
     private Proveedor proveedor;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="ID_TIPO_PAGO")
-    private TipoPago tipopago;
 
     @Column(name="TOTAL_PAGO")
     private Double total;
