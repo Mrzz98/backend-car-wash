@@ -31,7 +31,7 @@ public class OrdenCompra implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ORDEN_COMPRA_ID_GENERATOR")
     @NotNull
     @Column(name = "ID_ORDEN_COMPRA", updatable = false, unique=true)
-    private Long idOrdenCompra;
+    private Long id;
 
 //    @Column(name="NUMERO_ORDEN_COMPRA",nullable=false,length=6)
 //    private String numeroOrdenCompra;
