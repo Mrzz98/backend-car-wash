@@ -1,6 +1,6 @@
 package com.backendcarwash.backendcarwash.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -48,8 +49,11 @@ public class OrdenCompra implements Serializable {
     @OneToMany(fetch=FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true )
     @JoinColumn(name="ID_DETALLE_ORDEN_COMPRA")
     @JsonManagedReference
-    private Set<DetalleOrdenCompra> detalleordencompra= new HashSet<DetalleOrdenCompra>();
+    private List<DetalleOrdenCompra> detalles;
 
+    @JsonProperty("ID_PROVEEDOR")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ID_PROVEEDOR")
     private Proveedor proveedor;
