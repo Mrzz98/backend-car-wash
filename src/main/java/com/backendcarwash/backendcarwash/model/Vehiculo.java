@@ -30,11 +30,12 @@ public class Vehiculo {
     @Column(name = "MATRICULA", unique = true)
     private String matricula;
 
-//    @JsonProperty("ID_CLIENTE")
+    @JsonProperty("idCliente")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ID_CLIENTE")
-    private Cliente cliente;
+    private Cliente idCliente;
 
     @NotNull
     @Column(name = "MODELO")
