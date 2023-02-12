@@ -11,6 +11,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Getter
@@ -18,7 +19,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "VEHICULOS")
-public class Vehiculo {
+public class Vehiculo implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @SequenceGenerator(name = "VEHICULOS_ID_GNERATOR", sequenceName = "VEHICULOS_ID_USUARIO_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VEHICULOS_ID_GENERATOR")
