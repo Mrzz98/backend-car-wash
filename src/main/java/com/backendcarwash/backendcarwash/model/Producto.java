@@ -45,7 +45,7 @@ public class Producto {
     private Double costoServicio;
 
     @Column(name = "EXISTENCIA")
-    private Number existencia   ;
+    private Long existencia;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ID_UNIDAD_MEDIDA")

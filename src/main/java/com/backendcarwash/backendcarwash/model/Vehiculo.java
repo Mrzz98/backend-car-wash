@@ -27,7 +27,7 @@ public class Vehiculo {
     private String matricula;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="ID_CLIENTE")
+    @JoinColumn(name="ID_CLIENTE", referencedColumnName = "ID_CLIENTE")
     private Cliente cliente;
 
     @NotNull

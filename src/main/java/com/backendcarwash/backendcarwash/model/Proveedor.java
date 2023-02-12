@@ -32,7 +32,7 @@ public class Proveedor {
     private String nombre;
 
     @NotNull
-    @Column(name = "CEDULA")
+    @Column(name = "CEDULA", unique = true)
     private String cedula;
 
     @NotNull

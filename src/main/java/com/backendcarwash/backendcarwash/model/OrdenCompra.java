@@ -1,6 +1,10 @@
 package com.backendcarwash.backendcarwash.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -11,14 +15,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "ORDEN_COMPRA")
 public class OrdenCompra implements Serializable {
 
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name = "ID_ORDEN_COMPRA", updatable = false, nullable = false,unique=true)
+    @SequenceGenerator(name = "ORDEN_COMPRA_ID_GENERATOR", sequenceName = "ORDEN_COMPRA_ID_USUARIO_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ORDEN_COMPRA_ID_GENERATOR")
+    @NotNull
+    @Column(name = "ID_ORDEN_COMPRA", updatable = false, unique=true)
     private Long idOrdenCompra;
 
     @Column(name="NUMERO_ORDEN_COMPRA",nullable=false,length=6)
