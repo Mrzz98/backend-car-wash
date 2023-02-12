@@ -50,7 +50,7 @@ public class OrdenCompra implements Serializable {
     @OneToMany(fetch=FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true )
     @JoinColumn(name="ID_DETALLE_ORDEN_COMPRA")
     @JsonManagedReference
-    private List<DetalleOrdenCompra> detalles;
+    private List<DetalleOrdenCompra> idDetallesOrdenCompra;
 
     @JsonProperty("ID_PROVEEDOR")
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")

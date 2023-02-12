@@ -25,16 +25,16 @@ public class OrdenCompraServiceImpl implements OrdenCompraService {
     private final DetalleOrdenCompraRepository detalleOrdenCompraRepository;
     @Override
     public ResponseDTO crearOrdenCompra(OrdenCompra ordenCompra) {
-        if(ordenCompra.getDetalles() == null){
+        if(ordenCompra.getIdDetallesOrdenCompra() == null){
             return new ResponseDTO(new Date(), HttpStatus.BAD_REQUEST, "Se requieren los detalles.", null);
         }
-        List<DetalleOrdenCompra> detalles = ordenCompra.getDetalles() ;
+        List<DetalleOrdenCompra> detalles = ordenCompra.getIdDetallesOrdenCompra() ;
         ordenCompraRepository.save(ordenCompra);
         for(DetalleOrdenCompra det: detalles){
             det.setOrdenCompra(ordenCompra);
         }
         detalleOrdenCompraRepository.saveAll(detalles);
-        ordenCompra.setDetalles(detalles);
+        ordenCompra.setIdDetallesOrdenCompra(detalles);
 
 
         return new ResponseDTO(new Date(), HttpStatus.OK, "Creado con exito.", null);
