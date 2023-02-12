@@ -46,6 +46,7 @@ public class OrdenCompra implements Serializable {
     private String observaciones;
 
 
+
     @OneToMany(fetch=FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true )
     @JoinColumn(name="ID_DETALLE_ORDEN_COMPRA")
     @JsonManagedReference

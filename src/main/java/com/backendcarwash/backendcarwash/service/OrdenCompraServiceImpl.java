@@ -21,7 +21,7 @@ public class OrdenCompraServiceImpl implements OrdenCompraService {
     private final OrdenCompraRepository ordenCompraRepository;
     @Override
     public ResponseDTO crearOrdenCompra(OrdenCompra ordenCompra) {
-        if(ordenCompra.getDetalleordencompra() == null){
+        if(ordenCompra.getDetalles() == null){
             return new ResponseDTO(new Date(), HttpStatus.BAD_REQUEST, "Se requieren los detalles.", null);
         }
         ordenCompraRepository.save(ordenCompra);
