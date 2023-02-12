@@ -30,8 +30,8 @@ public class VehiculoController {
 
     @GetMapping(value = "/matricula", produces = MediaType.APPLICATION_JSON)
     @CrossOrigin(origins = "*")
-    public ResponseEntity<ResponseDTO> getVehiculoByMatricula(@RequestParam String ci){
-        return vehiculoService.getVehiculoByMatricula(ci).build();
+    public ResponseEntity<ResponseDTO> getVehiculoByMatricula(@RequestParam String mat){
+        return vehiculoService.getVehiculoByMatricula(mat).build();
     }
 
     @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
