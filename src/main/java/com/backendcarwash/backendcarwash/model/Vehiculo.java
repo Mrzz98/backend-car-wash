@@ -1,5 +1,9 @@
 package com.backendcarwash.backendcarwash.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,8 +30,11 @@ public class Vehiculo {
     @Column(name = "MATRICULA", unique = true)
     private String matricula;
 
+    @JsonProperty("ID_CLIENTE")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="ID_CLIENTE", referencedColumnName = "ID_CLIENTE")
+    @JoinColumn(name="ID_CLIENTE")
     private Cliente cliente;
 
     @NotNull
