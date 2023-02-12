@@ -51,7 +51,7 @@ public class Proveedor {
     private String correo;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(pattern = "dd/MM/yyyy hh:mm")
+    @JsonFormat(pattern = "yyyy-dd-mm hh:mm")
     @Column(name = "FECHA_INGRESO")
     private Date fechaIngreso;
 

@@ -39,7 +39,7 @@ public class OrdenCompra implements Serializable {
     @NotNull(message="No puede estar vacio")
     @Column(name="FECHA_EMISION")
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-dd-mm hh:mm")
     private Date fechaEmision;
 
     @Column(name="OBSERVACIONES",nullable=false,length=300)
@@ -58,6 +58,14 @@ public class OrdenCompra implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ID_PROVEEDOR")
     private Proveedor proveedor;
+
+    @JsonProperty("ID_CLIENTE")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="ID_CLIENTE")
+    private Cliente cliente;
+
 
     @Column(name="TOTAL_PAGO")
     private Double total;

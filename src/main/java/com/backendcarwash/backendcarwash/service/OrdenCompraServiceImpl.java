@@ -2,7 +2,9 @@ package com.backendcarwash.backendcarwash.service;
 
 import com.backendcarwash.backendcarwash.dto.ResponseDTO;
 import com.backendcarwash.backendcarwash.dto.TableDTO;
+import com.backendcarwash.backendcarwash.model.DetalleOrdenCompra;
 import com.backendcarwash.backendcarwash.model.OrdenCompra;
+import com.backendcarwash.backendcarwash.repository.DetalleOrdenCompraRepository;
 import com.backendcarwash.backendcarwash.repository.OrdenCompraRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,12 +21,20 @@ import java.util.Optional;
 public class OrdenCompraServiceImpl implements OrdenCompraService {
 
     private final OrdenCompraRepository ordenCompraRepository;
+
+    private final DetalleOrdenCompraRepository detalleOrdenCompraRepository;
     @Override
     public ResponseDTO crearOrdenCompra(OrdenCompra ordenCompra) {
         if(ordenCompra.getDetalles() == null){
             return new ResponseDTO(new Date(), HttpStatus.BAD_REQUEST, "Se requieren los detalles.", null);
         }
+        List<DetalleOrdenCompra> detalles = ordenCompra.getDetalles() ;
         ordenCompraRepository.save(ordenCompra);
+        for(DetalleOrdenCompra det: detalles){
+            det.setOrdenCompra(ordenCompra);
+        }
+        detalleOrdenCompraRepository.saveAll(detalles);
+        ordenCompra.setDetalles(detalles);
 
 
         return new ResponseDTO(new Date(), HttpStatus.OK, "Creado con exito.", null);
